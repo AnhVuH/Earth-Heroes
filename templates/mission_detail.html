@@ -32,9 +32,9 @@
 <!-- phan noi dung -->
 <div class="w-100 d-flex align-items-center" data-aos="zoom-in-down" data-aos-duration="1000" data-aos-anchor-placement="top-center" data-aos-once="true">
   <div id="finish_content" class="h-700px w-100 mx-100 d-flex flex-column align-items-center justify-content-around">
-      <div id="div01" class="">
-      <p class="text-center pb-0 mb-0">Nhiệm vụ  thứ {{mission_detail.mission_number}}</p>
-      <p class="text-center pb-0 mb-0"> {{mission_detail.mission.mission_name}}  </p>
+      <div id="div01" class="mb-1">
+      <p class="text-center pb-0 mb-1">Nhiệm vụ  thứ {{mission_detail.mission_number}}</p>
+      <p class="text-center pb-0 mb-1"> {{mission_detail.mission.mission_name}}  </p>
       <p class="text-center pt-0 mb-1">____________________________________</p>
       </div>
       <div class="mt-100px">
@@ -45,8 +45,8 @@
           </div>
 
           <div class="mt-0 d-flex justify-content-center mb-5">
-          <!-- <button type="button" class="pr-5 font-size-25px"> <a  href="{{url_for("finish")}}">Hoàn thành nhiệm vụ</a> </button> -->
-          <button  type="button" class="btn btn-success btn-lg px-5 " name="" value="" style="border-radius:5px 5px 5px 5px"> <a style="color: white" href="{{url_for("finish")}}">Hoàn thành nhiệm vụ</a> </button>
+
+          <button  type="button" class="btn btn-success btn-lg px-5 " name="" value="" style="border-radius:5px 5px 5px 5px"> <a style="color: white" href="{{url_for("finish", id_mission = id_mission)}}">Hoàn thành nhiệm vụ</a> </button>
 
           </div>
 

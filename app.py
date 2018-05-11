@@ -16,11 +16,11 @@ app.secret_key = 'a-useless-key'
 
 @app.route('/')
 def index():
-    if "user_id" in session:
-        loged_in = True
+    if "user_name" in session:
+        user_name = session["user_name"]
     else:
-        loged_in = False
-    return render_template("index.html", loged_in= loged_in)
+        user_name = None
+    return render_template("index.html", user_name= user_name)
 
 @app.route("/sign_up", methods= ['GET', 'POST'])
 def sign_up():
@@ -105,9 +105,13 @@ def user_profile(user_name):
 
 @app.route("/mission_detail")
 def mission_detail():
-    mission_detail = (UserMission.objects(user = session['user_id'],completed= False)).first()
-    session['done'] = False
-    return render_template("mission_detail.html",mission_detail = mission_detail)
+    if 'user_id' in session:
+        mission_detail = (UserMission.objects(user = session['user_id'],completed= False)).first()
+        id_mission = str(mission_detail.id)
+
+        return render_template("mission_detail.html",mission_detail = mission_detail, id_mission= id_mission)
+    else:
+        return render_template("message.html", message = "not log in")
 
 
 ALLOWED_EXTENSIONS = set([ 'jpg','png', 'jpeg','JPG' ])
@@ -117,10 +121,13 @@ def allowed_filed(filename):
     return check_1 and check_2
 
 
-@app.route("/finish",methods= ['GET', 'POST'])
-def finish():
+@app.route("/finish/<id_mission>",methods= ['GET', 'POST'])
+def finish(id_mission):
     if request.method == 'GET':
-        if not session['done']:
+        current_mission = UserMission.objects(user = session["user_id"], completed = False).first()
+        if current_mission == None:
+            return render_template("message.html", message = "no mission")
+        elif id_mission == str(current_mission.id):
             return render_template('finish.html')
         else:
             return render_template("message.html", message = "uploaded")
@@ -158,51 +165,51 @@ def finish():
             image_bytes = base64.b64encode(image_data)
             image_string = image_bytes.decode()
 
-            mission_updated = UserMission.objects(user = session["user_id"], completed = False).first()
+            mission_updated = UserMission.objects.with_id(id_mission)
             mission_updated.update(set__caption = caption, set__image = image_string, completed = True)
-            session['done'] = True
-            next_mission = UserMission.objects(user = session["user_id"], completed = False).first()
-            if next_mission != None:
-                notification = """
-                                <h2 style="text-align: center;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;____Gửi người anh h&ugrave;ng___</h2>
-                    <h4>{{username}}, nhiệm vụ hiện tại của bạn l&agrave; :</h4>
-                    <h4>- {{mission}}</h4>
-                    <h4>H&atilde;y ho&agrave;n th&agrave;nh n&oacute; :)))</h4>
-                    <h2 style="text-align: center;">&nbsp;</h2>
-                """
-                notification = notification.replace("{{username}}",next_mission.user.username).replace("{{mission}}",next_mission.mission.mission_name)
 
-                # user
-                gmail = GMail(username="20166635@student.hust.edu.vn",password="quy.dc20166635")
-                msg = Message("Gửi người anh hùng", to= next_mission.user.email, html = notification)
-                gmail.send(msg)
+            # next_mission = UserMission.objects(user = session["user_id"], completed = False).first()
+            # if next_mission != None:
+            #     notification = """
+            #                     <h2 style="text-align: center;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;____Gửi người anh h&ugrave;ng___</h2>
+            #         <h4>{{username}}, nhiệm vụ hiện tại của bạn l&agrave; :</h4>
+            #         <h4>- {{mission}}</h4>
+            #         <h4>H&atilde;y ho&agrave;n th&agrave;nh n&oacute; :)))</h4>
+            #         <h2 style="text-align: center;">&nbsp;</h2>
+            #     """
+            #     notification = notification.replace("{{username}}",next_mission.user.username).replace("{{mission}}",next_mission.mission.mission_name)
+            #
+            #     # user
+            #     gmail = GMail(username="20166635@student.hust.edu.vn",password="quy.dc20166635")
+            #     msg = Message("Gửi người anh hùng", to= next_mission.user.email, html = notification)
+            #     gmail.send(msg)
 
-            save_missions = UserMission.objects(user = session['user_id'],completed= True, saved = False)
-            if len(list(save_missions)) == 7:
+            unsave_missions = UserMission.objects(user = session['user_id'],completed= True, saved = False)
 
+            if len(list(unsave_missions)) == 7:
                 user = User.objects.with_id(session['user_id'])
-                missions_share = UserMission.objects(user = session['user_id'],completed = True, saved = False)
-                new_album = Library(user = user ,user_missions = missions_share)
+                new_album = Library(user = user ,user_missions = unsave_missions)
                 new_album.save()
-                session['new_album_id'] = str(new_album.id)
-                missions_share.update(set__saved=True)
+                session["album_id"] = str(new_album.id)
+                unsave_missions.update(set__saved=True)
+            else:
+                session["album_id"] = None
 
+#                 username = user.username
+#                 email = user.email
+#                 missions_completed = """
+#                     <h1 style="text-align: center;">.....Gửi người anh h&ugrave;ng......</h1>
+# <h3>- Mừng v&igrave; được gửi th&ocirc;ng điệp cho bạn 1 l&acirc;n nữa, {{username}} bạn đ&atilde; ho&agrave;n th&agrave;nh 7 nhiệm vụ tr&aacute;i đất ghi c&ocirc;ng bạn, h&atilde;y tiếp t&uacute;c g&oacute;p những h&agrave;nh động tươi đẹp cho m&ocirc;i trường nh&eacute;</h3>
+# <h3>&nbsp;&nbsp;</h3>
+# <h3>Heroku.com hận hạnh t&agrave;i trợ trang web n&agrave;y .</h3>
+#                 """
+#                 missions_completed = missions_completed.replace("{{username}}", username)
+#                 print("missions_completed")
+#                 gmail = GMail(username="20166635@student.hust.edu.vn",password="quy.dc20166635")
+#                 msg = Message("Gửi người anh hùng", to= email, html = missions_completed)
+#                 gmail.send(msg)
 
-                username = user.username
-                email = user.email
-                missions_completed = """
-                    <h1 style="text-align: center;">.....Gửi người anh h&ugrave;ng......</h1>
-<h3>- Mừng v&igrave; được gửi th&ocirc;ng điệp cho bạn 1 l&acirc;n nữa, {{username}} bạn đ&atilde; ho&agrave;n th&agrave;nh 7 nhiệm vụ tr&aacute;i đất ghi c&ocirc;ng bạn, h&atilde;y tiếp t&uacute;c g&oacute;p những h&agrave;nh động tươi đẹp cho m&ocirc;i trường nh&eacute;</h3>
-<h3>&nbsp;&nbsp;</h3>
-<h3>Heroku.com hận hạnh t&agrave;i trợ trang web n&agrave;y .</h3>
-                """
-                missions_completed = missions_completed.replace("{{username}}", username)
-                print("missions_completed")
-                gmail = GMail(username="20166635@student.hust.edu.vn",password="quy.dc20166635")
-                msg = Message("Gửi người anh hùng", to= email, html = missions_completed)
-                gmail.send(msg)
-
-            return redirect(url_for("share",id_mission = str(mission_updated.id)))
+            return redirect(url_for("share",id_mission = id_mission))
         else:
             return render_template("message.html", message = "file not allowed")
 
@@ -215,8 +222,8 @@ def share(id_mission):
     mission_name = mission_share.mission.mission_name
     mission_number = mission_share.mission_number
     album_id = None
-    if mission_number == 7:
-        album_id = session['new_album_id']
+    if session["album_id"] != None:
+        album_id = session["album_id"]
 
     if "user_id" in session:
         if session['user_id'] == str(mission_share.user.id):
@@ -263,18 +270,16 @@ def continue_challenge():
 @app.route('/library')
 def library():
     all_albums = Library.objects()
-    if "user_id" in session:
-        loged_in = True
+    if "user_name" in session:
+        user_name = session["user_name"]
     else:
-        loged_in = False
-    return render_template("library.html", all_albums= all_albums, loged_in= loged_in)
+        user_name = None
+    return render_template("library.html", all_albums= all_albums, user_name= user_name)
 
 @app.route('/logout')
 def logout():
-    if 'user_id' in session:
-        # del session['user_id']
-        session.clear()
-        return redirect(url_for("index"))
+    session.clear()
+    return redirect(url_for("index"))
 
 
 if __name__ == '__main__':

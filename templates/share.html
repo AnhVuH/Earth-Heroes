@@ -30,7 +30,7 @@
             <p  class="btn"> <a class="justify-content-end btn-color pr-5" href="{{url_for("congratulation", album_share_id = album_id)}}">Share toàn bộ 7 nhiệm vụ đã thực hiện</a> </p>
 
           {% endif %}
-          <p  class="btn"> <a class="justify-content-end btn-color pr-5" href = "{{url_for('user_profile')}}">Trang cá nhân</a> </p>
+          <p  class="btn"> <a class="justify-content-end btn-color pr-5" href = "{{url_for("user_profile", user_name = username)}}">Trang cá nhân</a> </p>
           {% endif %}
 
       </div>

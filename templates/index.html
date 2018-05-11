@@ -46,11 +46,11 @@
     <p class="btn justify-content-end pl-5"> <a class="btn-home" href="{{url_for('index')}}">Earth Heroes</a> </p>
 
     <div id="navbar" class="d-flex justify-content-end">
-      {% if not loged_in %}
+      {% if user_name == None %}
       <p  class="btn d-flex justify-content-end"><a class="btn-color" href = "{{url_for('login')}}">Log in</a> </p>
       <p  class="btn "> <a class="justify-content-end btn-color pr-5" href = "{{url_for('sign_up')}}">Sign up</a> </p>
       {% else %}
-      <p  class="btn "> <a class="justify-content-end btn-color pr-5" href = "{{url_for('user_profile')}}">Trang cá nhân</a> </p>
+      <p  class="btn "> <a class="justify-content-end btn-color pr-5" href = "{{url_for("user_profile", user_name = user_name)}}">Trang cá nhân</a> </p>
       <p  class="btn "> <a class="justify-content-end btn-color pr-5" href = "{{url_for('logout')}}">Log out</a> </p>
       {% endif %}
     </div>

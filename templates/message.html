@@ -56,11 +56,14 @@
 <a href="{{url_for("index")}}">Trở lại trang chủ</a>
 </div>
 
-{% elif message == "wrong user"%}
+{% elif message == "wrong user" or  message == "not log in"%}
 <p class ="text-white">Bạn không có quyền truy cập</p>
   <div  class="d-flex align-items-end justify-content-center">
 <a href="{{url_for("login")}}">Đăng nhập trước</a>
 </div>
+
+{% elif message == "no mission"%}
+<p class ="text-white">Error</p>
 
   {% endif%}
 
