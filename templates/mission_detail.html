@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mission detail</title>
+<link rel="stylesheet" href="../static/css/mission_detail.css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Yeseva+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<link rel="stylesheet" href="../static/plugins/aos/aos.css">
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+
+    <!-- 0000000000000000000000000 -->
+   <script src="../static/plugins/aos/aos.js"></script>
+   <script type="text/javascript">
+     AOS.init();</script>
+   <!-- 0000000000000000000000000 -->
+
+<div id="bg-img" class="">
+  <!-- phan header  -->
+<div class="d-flex justify-content-between pt-2">
+  <p  class=" pl-5"> <a class="btn-home" href="{{url_for('index')}}">Earth Heroes</a> </p>
+  <p > <a class=" btn-color pr-5" href = "{{url_for('logout')}}">Log out</a> </p>
+</div>
+<!-- phan noi dung -->
+<div class="w-100 d-flex align-items-center" data-aos="zoom-in-down" data-aos-duration="1000" data-aos-anchor-placement="top-center" data-aos-once="true">
+  <div id="finish_content" class="h-700px w-100 mx-100 d-flex flex-column align-items-center justify-content-around">
+      <div id="div01" class="">
+      <p class="text-center pb-0 mb-0">Nhiệm vụ  thứ {{mission_detail.mission_number}}</p>
+      <p class="text-center pb-0 mb-0"> {{mission_detail.mission.mission_name}}  </p>
+      <p class="text-center pt-0 mb-1">____________________________________</p>
+      </div>
+      <div class="mt-100px">
+          <div class="d-flex justify-content-center">
+                <div class="text01 d-flex justify-content-center mt-1 px-5 " style=",width: 100px;height:350px;white-space:pre-wrap;overflow:auto;">
+                  {{mission_detail.mission.description}}
+                </div>
+          </div>
+
+          <div class="mt-0 d-flex justify-content-center mb-5">
+          <!-- <button type="button" class="pr-5 font-size-25px"> <a  href="{{url_for("finish")}}">Hoàn thành nhiệm vụ</a> </button> -->
+          <button  type="button" class="btn btn-success btn-lg px-5 " name="" value="" style="border-radius:5px 5px 5px 5px"> <a style="color: white" href="{{url_for("finish")}}">Hoàn thành nhiệm vụ</a> </button>
+
+          </div>
+
+      </div>
+  </div>
+
+
+</div>
+
+
+  </body>
+</html>

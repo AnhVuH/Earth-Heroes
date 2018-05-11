@@ -1,0 +1,117 @@
+#bg-img{
+  background-image: url("https://goo.gl/FmsmVC");
+  width: 100%;
+  height: 800px;
+  background-size: cover;
+  background-attachment: fixed;
+
+}
+.btn-home{
+  font-size: 40px;
+  font-weight: bold;
+  color: #296647;
+  font-family: 'Playfair Display', serif;
+  text-decoration: none !important;
+}
+.btn-color{
+  color: #545454;
+  font-size: 24px;
+}
+a{
+  text-decoration: none !important;
+}
+#finish_content{
+  background-color: #0d0d0d;
+  min-height: 650px;
+  opacity: 0.6;
+  margin-top: 30px;
+  border-radius: 12px;
+}
+.mx-100{
+  margin-left: 100px;
+  margin-right: 100px;
+}
+#div01{
+  padding-top: 30px;
+  height: 100px;
+  /* background-color: red; */
+  /* font-family: 'Playfair Display', serif; */
+  font-family: 'Yeseva One', cursive;
+  font-size: 40px;
+  color: white;
+}
+textarea{
+  background-color: #0d0d0d;
+  border: none;
+  color: white;
+}
+.text01{
+  color: white;
+  font-size: 27px;
+  /* font-family: 'Playfair Display', serif; */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: lighter;
+}
+.mt-100px{
+  margin-top: 70px;
+}
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 2px solid gray;
+  /* color: gray; */
+  /* background-color: white; */
+  padding: 8px 20px;
+  border-radius: 8px 0px 0px 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* .upload-btn-wrapper input[type=file] {
+  /* font-size: 100px; */
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+} */
+
+.h-700px{
+  height: 2000px;
+}
+.h-80{
+  height: 90%;
+}
+.btn-home:hover {color: #235b3f}
+.btn-color:hover {color: #235b3f}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* mmmm */

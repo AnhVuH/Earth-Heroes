@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Finish</title>
+<link rel="stylesheet" href="../static/css/finish.css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Yeseva+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<link rel="stylesheet" href="../static/plugins/aos/aos.css">
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
+
+  </head>
+  <body>
+
+    <!-- 0000000000000000000000000 -->
+   <script src="../static/plugins/aos/aos.js"></script>
+   <script type="text/javascript">
+     AOS.init();</script>
+   <!-- 0000000000000000000000000 -->
+
+<div id="bg-finish" class="">
+  <!-- phan header  -->
+<div class="d-flex justify-content-between">
+  <p class="pl-5"> <a class="btn-home" href="{{url_for('index')}}">Earth Heroes</a> </p>
+  <p> <a class=" btn-color pr-5" href = "{{url_for('logout')}}">Log out</a> </p>
+</div>
+<!-- phan noi dung -->
+<div class=" w-100 h-75 d-flex align-items-center" data-aos="zoom-in-down" data-aos-duration="1000" data-aos-anchor-placement="top-center" data-aos-once="true">
+<div id="finish_content" class=" h-700 w-100 mx-100">
+<div id="div01" class="">
+<p class="text-center pb-0 mb-0">Hãy up ảnh để hoàn thành nhiệm vụ !</p>
+
+<p class="text-center pt-0 mt-0">____________________________________</p>
+<!-- <u class="text-center">Cảm ơn bạn đã trở thành một người hùng.</u> -->
+
+</div>
+
+
+<div class="mt-100px d-flex justify-content-center">
+
+  <form  method="post" enctype="multipart/form-data">
+    <div class="">
+      <input type="file" name="image" id="file-4" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" multiple=""  required>
+      <label class="pl-0 m-p-bot-0px" for="file-4" ><span>Hãy chọn 1 file ảnh…</span></label>
+    </div>
+    <!-- <label>Caption</label> -->
+    <div class="ml-100">
+
+
+    </div>
+<div class="d-flex justify-content-center">
+  <textarea class="text01 d-flex justify-content-around mt-0 pt-0" type="text" name="caption" rows="4" cols="60" placeholder="Hãy đăng ảnh để hoàn thành nhiệm vụ.
+Chia sẻ cảm nhận với mọi người nào !" value=""></textarea>
+
+
+</div>
+
+<div class="ml-5 mt-3 d-flex justify-content-center pt-3">
+      <input  class="btn px-5" type="submit" value="Gửi">
+      <!-- <button  type="submit" class="btn btn-success btn-lg px-5" style="border-radius:5px 5px 5px 5px"> <a style="color: white" href="#">Gửi</a> </button> -->
+
+</div>
+
+
+  </form>
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<script src="../static/js/custom-file-input.js"></script>
+
+  </body>
+</html>

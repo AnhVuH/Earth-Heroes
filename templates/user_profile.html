@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../static/css/user_profile.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Yeseva+One" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+  </head>
+<!-- hết phần head -->
+  <body>
+
+    <div id="bg-img"class="">
+        <div id="header" class="d-flex">
+            <p  class="btn justify-content-end pl-5 "><a class="btn-home" href="{{url_for("index")}}">Earth Heroes</a></p>
+
+            <div id="navbar" class="d-flex justify-content-end mr-5">
+              <p class="btn d-flex justify-content-end "><a class="btn-color " href="{{url_for("logout")}}">Log out</a></p>
+            </div>
+        </div>
+      <div class="h-75 w-50 ml-5 pl-5 mt-3">
+       <p class="quote01 mb-3">Trái Đất này cần chúng ta.  <br>
+          Mỗi chúng ta là một người anh hùng của Trái Đất </p>
+      </div>
+    </div>
+
+
+    <div class="d-flex flex-column  justify-content-center">
+        <div class="d-flex flex-column  justify-content-center">
+            <div class="container d-flex justify-content-center align-items-center mt-5 ">
+                {% if uncompleted %}
+                <button type="button" class="hovez w-30 btn bg-info text-center">
+                  <a class = "text-white font-size-20px" href="{{url_for("mission_detail")}}">Chi tiết nhiệm vụ hiện tại</a>
+                </button>
+                {% else %}
+
+                <button type="button" class="hovez w-30 btn bg-info text-center">
+                  <a class = "text-white font-size-20px" href="{{url_for("continue_challenge")}}">Đăng ký thêm nhiệm vụ</a>
+                </button>
+
+                {% endif %}
+            </div>
+                <div class="text-center font-size-40px text-green mt-5">Xin chào {{username}}. Đây là những chiến tích của bạn</div>
+        </div>
+
+
+        <div class="d-flex justify-content-around flex-wrap">
+            {% for mission_completed in missions_completed %}
+            <div class="card mb-3 w-25 m-3">
+                <img class="card-img-top fit-image h-400px px-1" src="data:image/jpg;base64,{{mission_completed.image}}" alt="Card image cap">
+                <div class="card-body flex-column">
+
+                  <h5 class="card-title text-center">{{mission_completed.mission.mission_name}}</h5>
+                  <p class="card-text text-center" style="overflow:auto;">{{mission_completed.caption}}</p>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+
+    </div>
+
+
+        <div class="mt-5 d-flex align-items-center justify-content-center bg-dark mt-100px h-100px">
+        <p class="text-center" style="color: white;font-size:25px">Được thực hiện bởi C4E16-Techkids</p>
+        </div>
+  </body>
+</html>

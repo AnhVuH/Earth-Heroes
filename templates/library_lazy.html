@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Library</title>
+
+<link rel="stylesheet" href="../static/css/library.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+<link rel="stylesheet" href="../static/css/lightgallery.min.css" />
+<link rel="stylesheet" href="../static/css/lg-transitions.min.css" />
+<link rel="stylesheet" href="../static/css/lg-fb-comment-box.min.css" />
+
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+<script src="../static/js/lightgallery.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $("#lightgallery").lightGallery();
+  });
+  </script>
+
+  </head>
+
+  <body>
+<!-- hết phần head -->
+    <div id="bg-img"class="">
+
+      <div id="header" class="d-flex pt-0">
+        <p class="btn justify-content-end pl-5"> <a class="btn-home" href="{{url_for('index')}}">Earth Heroes</a> </p>
+
+        <div id="navbar" class="d-flex justify-content-end">
+          {% if not loged_in %}
+          <p  class="btn d-flex justify-content-end"><a class="btn-color" href = "{{url_for('login')}}">Log in</a> </p>
+          <p  class="btn "> <a class="justify-content-end btn-color pr-5" href = "{{url_for('sign_up')}}">Sign up</a> </p>
+          {% else %}
+          <p  class="btn "> <a class="justify-content-end btn-color pr-5" href = "{{url_for('user_profile')}}">Trang cá nhân</a> </p>
+          <p  class="btn "> <a class="justify-content-end btn-color pr-5" href = "{{url_for('logout')}}">Log out</a> </p>
+          
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="h-75 w-50 ml-5 pl-5 mt-3">
+     <p class="quote01 mb-3"><span class="btn-home">Earth Hero Album</span> nơi những người hùng chia sẻ những câu chuyện nhỏ của họ. </p>
+      </div>
+    </div>
+<!-- tới phần hiển thị các ảnh của người dùng!!!     -->
+
+<div class="d-flex flex-column py-2" >
+    {% for album in all_albums %}
+    <div class="d-flex flex-column align-items-center my-3">
+      <div class="d-flex justify-content-center"><h3>{{album.user.username}}</h3></div>
+        <div class="lazy w-75 my-2">
+            {% for item in album.user_missions %}
+              <div class="">
+                    <img data-lazy ="data:image/jpg;base64,{{item.image}}"  width="400px" height="300px">
+                    <div class="">
+                      <h3 class = "font-size-20px">{{item.mission.mission_name}}</h3>
+                      <p style="height:100px; overflow:auto;">{{item.caption}}</p>
+                    </div>
+              </div>
+              {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+    <script>
+      $(document).ready(function(){
+        $('.lazy').slick({
+          lazyLoad: 'ondemand',
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          dots: true,
+          arrows: true
+        });
+      });
+    </script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Share</title>
+    <link rel="stylesheet" href="../static/css/share.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
+
+      <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Yeseva+One" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+  </head>
+  <body>
+
+    <div id="bg-img">
+      <div class="d-flex justify-content-between">
+        <!-- <button type="button" class="btn btn-link pl-5"> <a class="btn-home font-size-30px" href="{{url_for('index')}}">Earth Hero</a> </button> -->
+        <p class="btn justify-content-end pl-5"> <a class="btn-home" href="{{url_for('index')}}">Earth Heroes</a> </p>
+        <div>
+          {% if is_user%}
+          {% if mission_number < 7 %}
+            <p  class="btn"> <a class="justify-content-end btn-color pr-5" href="{{url_for("mission_detail")}}">Chi tiết nhiệm vụ tiếp theo</a> </p>
+          {% elif album_id != None %}
+            <p  class="btn"> <a class="justify-content-end btn-color pr-5" href="{{url_for("congratulation", album_share_id = album_id)}}">Share toàn bộ 7 nhiệm vụ đã thực hiện</a> </p>
+
+          {% endif %}
+          <p  class="btn"> <a class="justify-content-end btn-color pr-5" href = "{{url_for('user_profile')}}">Trang cá nhân</a> </p>
+          {% endif %}
+
+      </div>
+      </div>
+
+
+<div class="container mt-5 congrat0 text-center">
+  <p>Chúc mừng {{username}} đã hoàn thành nhiệm vụ thứ {{mission_number}}</p>
+
+</div>
+<div class="">
+<!-- ở dưới là bg-danger -->
+<div class="h-75 w-100 container d-flex">
+  <!-- cột ảnh -->
+        <div class="w-75 h-500px">
+        <img class ="img-border" style="width:100%;height:100%;object-fit:contain;" src="data:image/jpg;base64,{{image}}" alt="">
+        </div>
+  <!-- cột caption  -->
+        <div class=" caption-border ml-3 caption h-500px w-25">
+          <h3 class="mt-2 congrat text-white text-center" >{{mission_name}}</h3>
+          <p class="my-2 congrat text-white text-center">_________________</p>
+          <p class="mt-2 text-white text-center" style="height:100px; overflow:auto;">  {{ caption }}</p>
+          </div>
+
+</div>
+
+              <div class="fb-share-button d-flex justify-content-center my-4" data-href="https://earth-heroes.herokuapp.com/share/{{id_mission}}"
+              data-layout="button_count"
+              data-size="large"
+              data-mobile-iframe="true">
+              <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2earth-heroes.herokuapp.com%2Fshare%2F{{id_mission}}&amp;src=sdkpreparse"
+              class="fb-xfbml-parse-ignore">Chia sẻ</a>
+              </div>
+
+</div>
+      </div>
+      </div>
+
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.12';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Facebook -->
+
+
+
+
+    </body>
+  </html>

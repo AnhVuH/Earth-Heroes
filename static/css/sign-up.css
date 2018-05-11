@@ -1,0 +1,70 @@
+/* #bg-img{
+  background-image: url("https://lh3.googleusercontent.com/naoGNHV39vJDLbONPh6mnztmW_xPOwlyNGI7U3t8mZoDYmsuNEPzYEKC4C7uXW3hMXWGxQ2bgBdjEGer8e4jH5VwVQPcr2AxFUnoj1aqefOOihrGJ0-z6tJK_MnV8R6SJtn3XNIoZ5YND1JSiyn-NDP9hSF8j3_VbzdWuw2lfVkjmwTdotE4jMAgnAdYHObsyE8BrQl7QwLBU6XYMyMeKPmlKnUYsx38DB8RazB1v7YNQbXU0WpPAFnvbV_74vFSJ9QDACp7Lz_FOoHke38EKu1I8us6yz4ZASeazcazBou9eO4J52RhVraj-hk2qdIqIXkVJldCf66VLvRUViHkiaGyRb13fvLb008kRaDAQn3Wyk2mk8d1N7pcx2lMv6pc_S3WvMdGU25WtItPbwvaRMsezMhrUT1FbYHq5KmfLqXidL60M_nBmWrZuWgjqfbOqFsWXpqYXnnSGkonabWe4ysG8BfFKpKISs1LbZveopp6XD8GfSZn8IoOX_cKagYbuqcywdwWV6fPLBs7fQIbyCYVq6QYnhrOuaDpv81Mm37l2yh0dub9NRw5Xa7TlUk7_P8X8oZi3Py0fBMbAXY3yGyJySIe_cy-C_r1dN4=w2160-h1440-no");
+  background-size: cover;
+  width: 100%;
+  height: 850px;
+  background-position: center;
+} */
+
+#bg-img{
+  background-image: url("https://lh3.googleusercontent.com/c7Yr8AhODNCe78dVTZzfdqFWOiidtt4ogjISxZzXRY_tdoMuKozLSSf2Ow95JNdrn0S_cAsQlCS_D7Jq_VuodwLgV41kooielchX0sAd6KZdomUq77jrfe9SV22uFkh3mdvUycyaN5dnk-SzfydPqZoT-FJRkqc8miwgLZm8p6cwXKjF1bhMV5CgjL_iEhXRpQQo7zoiW1Q9FSEWdFn8pYaWL3O53Z1-eJg4ae9eEn1k7v4Y1enrk_zBjlkhvAVtM_yFYu4SgkUV8M6YmMF9dPs9rp7CdrJqWdn6kiaa-Pb2n1NvuM495_eFJNJ-TOdU9-JtgFig-YttVd8bU7N7bJc-mXqlpuepw-HHVcZ-TWm-v_zhcWQojxLWZ3Q9s5S_uy1AU7UbO7PUDgUUEj0UyrrAtwqfK_72yLF9-Dkish4KJpFHYDCzzBhAXKntq6FriowEF0Lf_VzrMrdJDUQRleoIpuP1lD7Tz_LvEnsnVF6s4jcY0JWlG-mMpLqfX7D9LQ6jOLFVZJ-oJkTylX2ipQBpKsGsupRkBAypnaQh-GPYkakkLGaPRKLZG3W7WsBUdDRz3CccBc0cHAxV6V-Dy7k7RzX15dtyba2iGSc=w2160-h1390-no");
+
+  background-size: cover;
+  height: 100%;
+  background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+
+}
+
+#login-name{
+  font-size: 50px;
+  font-family: 'Playfair Display', serif;
+  border-bottom-style: ridge;
+  color: black;
+}
+#login{
+  background-color: #0d0d0d;
+  /* background-color: #99dd85; */
+  min-height: 550px;
+  opacity: 0.6;
+  padding: 40px 80px 40px 80px;
+  border-radius: 12px;
+}
+.user{
+  font-family: 'Playfair Display', serif;
+  color: white;
+  font-size: 29px;
+}
+.edit-btn{
+    /* border-bottom-style: ridge; */
+}
+.btn{
+  width: 50%;
+  float: left;
+  height: 40px;
+}
+.btn-home{
+  font-size: 40px;
+  font-weight: bold;
+  color: #296647;
+  font-family: 'Playfair Display', serif;
+  text-decoration: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* mmm */
